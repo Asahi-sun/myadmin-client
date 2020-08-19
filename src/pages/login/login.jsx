@@ -4,7 +4,6 @@ import {
     Input,
     Icon,
     Button,
-    Checkbox
 } from 'antd';
 
 import {
@@ -18,7 +17,9 @@ import './login.less';
 
 class Login extends Component {
 
-
+    onFinish = values => {
+        console.log('Received values of form: ', values);
+    };
 
     render() {
         return (
@@ -29,41 +30,31 @@ class Login extends Component {
                 </div>
                 <div className="login-content">
                     <h1>用户登录</h1>
-                    <div>
-                        <Form
-                            name="normal_login"
-                            className="login-form"
-                            initialValues={{ remember: true }}
+                    <Form
+                        onFinish={this.onFinish}
+                        className = "login-form"
+                    >
+                        <Form.Item>
+                            <Input
+                                prefix={<UserOutlined />}
+                                placeholder="用户名"
+                            />
+                        </Form.Item>
 
-                        >
-                            <Form.Item
-                                name="username"
-                                rules={[{ required: true, message: 'Please input your Username!' }]}
-                            >
-                                <Input
-                                    prefix={<UserOutlined className="site-form-item-icon" />}
-                                    placeholder="用户名" 
-                                />
-                            </Form.Item>
+                        <Form.Item>
+                            <Input.Password
+                                prefix={<LockOutlined />}
+                                type="password"
+                                placeholder="密码"
+                            />
+                        </Form.Item>
 
-                            <Form.Item
-                                name="password"
-                                rules={[{ required: true, message: 'Please input your Password!' }]}
-                            >
-                                <Input.Password
-                                    prefix={<LockOutlined className="site-form-item-icon" />}
-                                    type="password"
-                                    placeholder="密码"
-                                />
-                            </Form.Item>
-
-                            <Form.Item>
-                                <Button type="primary" htmlType="submit" style = {{ width:'100%' }} className="login-form-button">
-                                    登录
-                                </Button>
-                            </Form.Item>
-                        </Form>
-                    </div>
+                        <Form.Item>
+                            <Button type="primary" htmlType="submit"  className="login-form-button">
+                                登 录
+                            </Button>
+                        </Form.Item>
+                    </Form>
                 </div>
             </div>
         )

@@ -7,7 +7,14 @@ import React from 'react'
 //     message,
 // } from 'antd'
 
-import { BrowserRouter, HashRouter,Switch,Route,Redirect } from "react-router-dom"
+import {
+    BrowserRouter as Router,
+    HashRouter,
+    Switch,
+    Route,
+    Redirect,
+    Link
+} from "react-router-dom"
 
 import Login from './pages/login/login'
 import Admin from './pages/admin/admin'
@@ -15,15 +22,15 @@ import Admin from './pages/admin/admin'
 class App extends React.Component {
     render() {
         return (
-            <div style = {{ width:'100%',height:'100%' }}>
-                <BrowserRouter>
+            <div style={{ width: '100%', height: '100%' }}>
+                <Router>
+                   
                     <Switch>
-                        <Route path="/" component={Login}/>
-                        <Route path="/admin" component={Admin}/>
-                        {/* <Redirect to="/login" from="/"/> */}
-
+                        <Route path="/login"   component={Login} />
+                        <Route path="/admin" component={Admin} />
+                        <Redirect to="/login" />
                     </Switch>
-                </BrowserRouter>
+                </Router>
             </div>
         )
     }
