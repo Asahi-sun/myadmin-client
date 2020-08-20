@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { withRouter,Redirect } from 'react-router-dom'
 import {
     Form,
     Input,
     Icon,
     Button,
+    Result,
+    message,
 } from 'antd';
 
 import {
@@ -12,6 +15,7 @@ import {
 } from '@ant-design/icons';
 
 
+import { reqLogin } from '../../api/index'
 import logo from './images/logo.png';
 import './login.less';
 
@@ -19,13 +23,21 @@ import './login.less';
 
 class Login extends Component {
 
-    // const NormalLoginForm = () =>{
-    //     const onFinish = values => {
-    //         console.log('Received values of form: ', values);
-    //     };
-    // }
+    onFinish = async values => {  //此处onFinish必须配合表单中rules验证，不然无法取得值
+        const result = await reqLogin(values.username,values.password)
 
-    onFinish = values => {  //此处onFinish必须配合表单中rules验证，不然无法取得值
+        // 登录成功
+        if(result.status === 0){
+            // 将user信息保存到local
+            const user = result.data
+            localStorage.setItem('user_key',JSON.stringify(user))
+
+            // 跳转到管理界面
+            this.props.history.replace('/admin')
+            message.success('登录成功')
+        }else{ //登录失败
+            message.error(result.msg)
+        }
         console.log('Received values of form: ', values);
     };
 
@@ -52,6 +64,13 @@ class Login extends Component {
 
 
     render() {
+
+        //  读取保存的user，如果存在，直接跳转到管理界面
+        const user = JSON.parse(localStorage.getItem('user_key') || '{ }')
+        if(user._id){
+            this.props.history.replace('/login')  //事件回调函数中进行路由跳转
+            return <Redirect to='/admin' />  //自动跳转到指定的路由路径
+        }
 
         return (
             <div className="login">
@@ -123,7 +142,7 @@ class Login extends Component {
 
 
 
-export default Login
+export default withRouter(Login)
 
 
 /**
