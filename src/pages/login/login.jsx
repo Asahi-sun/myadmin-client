@@ -17,21 +17,42 @@ import './login.less';
 
 
 
-class Login extends Component {  
-    
+class Login extends Component {
+
     // const NormalLoginForm = () =>{
     //     const onFinish = values => {
     //         console.log('Received values of form: ', values);
     //     };
-    
     // }
 
-    onFinish = values => {
+    onFinish = values => {  //此处onFinish必须配合表单中rules验证，不然无法取得值
         console.log('Received values of form: ', values);
     };
 
-    render() {  
-        
+    /**
+     * 自定义校验
+     * （1）必须输入
+     * （2）必须大于等于4位
+     * （3）必须小于等于12位
+     * （4）必须是英文、数字或下划线组成 
+     */
+    validateUsername = (rule, value) => {
+        if (!value) {
+            return Promise.reject('请输入用户名')
+        } else if (value.length < 4) {
+            return Promise.reject('用户名长度必须大于等于4')
+        } else if (value.length > 12) {
+            return Promise.reject('用户名长度必须小于等于12')
+        } else if (!/^[a-zA-Z0-9_]+$/.test(value)) {
+            return Promise.reject('用户名必须是英文、数字或下划线组成')
+        } else {
+            return Promise.resolve()
+        }
+    }
+
+
+    render() {
+
         return (
             <div className="login">
                 <div className="login-header">
@@ -45,14 +66,42 @@ class Login extends Component {
                         onFinish={this.onFinish}
                         className="login-form"
                     >
-                        <Form.Item>
+                        <Form.Item
+                            name="username"
+                            // rules={[ //声明式验证：使用插件已定义好的规则进行验证
+                            //     // （1）必须输入
+                            //     // （2）必须大于等于4位
+                            //     // （3）必须小于等于12位
+                            //     // （4）必须是英文、数字或下划线组成       
+                            //     { required: true, message: '请输入用户名' },
+                            //     { min: 4, message: '用户名长度不能小于4' },
+                            //     { max: 12, message: '用户名长度不能大于12' },
+                            //     { pattern: /^[a-zA-Z0-9_]+$/, message: '必须是英文、数字或下划线组成  ' }
+
+                            // ]}
+                            rules={[
+                                { validator: this.validateUsername }
+                            ]}
+                        >
                             <Input
                                 prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
                                 placeholder="用户名"
                             />
                         </Form.Item>
 
-                        <Form.Item>
+                        <Form.Item
+                            name="password"
+                            rules={[ //声明式验证：使用插件已定义好的规则进行验证
+                                // （1）必须输入
+                                // （2）必须大于等于4位
+                                // （3）必须小于等于12位
+                                // （4）必须是英文、数字或下划线组成       
+                                { required: true, whitespace: true, message: '请输入密码' },
+                                { min: 4, message: '密码长度不能小于4' },
+                                { max: 12, message: '密码长度不能大于12' },
+                                { pattern: /^[a-zA-Z0-9_]+$/, message: '必须是英文、数字或下划线组成  ' }
+                            ]}
+                        >
                             <Input.Password
                                 prefix={<LockOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
                                 type="password"
