@@ -8,8 +8,8 @@ import React from 'react'
 // } from 'antd'
 
 import {
-    BrowserRouter as Router,
-    HashRouter,
+    // BrowserRouter as Router,
+    HashRouter as Router,
     Switch,
     Route,
     Redirect,
@@ -28,7 +28,7 @@ class App extends React.Component {
                     <Switch>
                         <Route path="/login"   component={Login} />
                         <Route path="/admin" exact component={Admin} />
-                        <Redirect to="/admin" />
+                        <Redirect to="/login" />
                     </Switch>
                 </Router>
             </div>
