@@ -4,7 +4,10 @@
 
 import qs from 'qs';
 
+import jsonp from 'jsonp' //axios不能发jsonp请求
 import ajax from './ajax'
+import { data } from 'autoprefixer';
+import { message } from 'antd';
 
 //  const Base = 'http://localhost:5000'
 const Base = ''
@@ -46,3 +49,25 @@ export const reqLogin = (username, password) =>ajax.post(Base + '/login',{ usern
 //      }
 // )
 
+
+// 发送jsonp请求得到天气信息
+export const reqWeather = (city) =>{
+    return new Promise((resolve,reject)=>{
+        const url = `http://api.map.baidu.com/telematics/v3/weather?location=${city}&output=json&ak=3p49MVra6urFRGOT9s8UBWr2`
+        jsonp(url,{},(error,data)=>{
+            if(!error && data.error === 0){ //成功
+
+                const {dayPicutreUrl,weather} = data.results[0].weather_data[0]
+                resolve({ dayPicutreUrl,weather })
+            }else{ //失败的
+                message.error('获取天气信息失败')
+            }
+        }) 
+    })
+    
+}
+
+
+// 获取分类列表
+
+export const reqCategorys = () => ajax.get(Base + 'manage/category/list')

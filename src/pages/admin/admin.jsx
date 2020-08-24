@@ -58,7 +58,7 @@ class Admin extends Component {
                     </Sider>
                     <Layout>
                         <Header />
-                        <Content style={{ backgroundColor: 'white' }}>
+                        <Content style={{ backgroundColor: 'white',margin:'20px' }}>
                             <HashRouter>
                                 <Switch>
                                     <Route path='/home' component={Home}/>
@@ -73,7 +73,7 @@ class Admin extends Component {
                                 </Switch>
                             </HashRouter>
                         </Content>
-                        <Footer style={{ textAlign: 'center', color: 'rgba(0,0,0,0.5)' }}>推荐使用谷歌浏览器，可以获取更块网速</Footer>
+                        <Footer style={{ textAlign: 'center', color: 'rgba(0,0,0,0.5)' }}>推荐使用谷歌浏览器，可以获取更快网速</Footer>
                     </Layout>
                 </Layout>
             </div>

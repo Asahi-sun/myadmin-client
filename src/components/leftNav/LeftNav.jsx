@@ -26,9 +26,6 @@ import logo from '../../assets/images/logo.png'
 const { SubMenu } = Menu;
 
 
-
-componentWillMount
-
 /**
  * 左侧导航组件
  */
@@ -38,17 +35,20 @@ class LeftNav extends Component {
     * 第一次render()之后 执行一次
     * 执行异步任务：发ajax请求，启动定时器
     */
-    componentDidMount() {
+    // componentDidMount() {
 
-    }
+    // }
 
     /**
-     * ]第一次render()之前执行一次
+     * 第一次render()之前执行一次
      * 为第一次render()做一些同步的准备工作
      */
-    componentWillMount() {
+    // componentWillMount() {
 
-    }
+    // }
+    // componentWillMount() {
+
+    // }
 
     render() {
         // 得到当前请求的路由路径
