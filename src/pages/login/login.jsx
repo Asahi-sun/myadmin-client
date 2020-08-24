@@ -18,7 +18,7 @@ import {
 import memoryUtils from '../../utils/memoryUtils'
 import storageUtils from '../../utils/storageUtils'
 import { reqLogin } from '../../api/index'
-import logo from './images/logo.png';
+import logo from '../../assets/images/logo.png';
 import './login.less';
 
 
@@ -75,7 +75,7 @@ class Login extends Component {
         // const user = storageUtils.getUser()
         const user = memoryUtils.user
         if(user._id){
-            this.props.history.replace('/login')  //事件回调函数中进行路由跳转
+            // this.props.history.replace('/login')  //事件回调函数中进行路由跳转
             return <Redirect to='/admin' />  //自动跳转到指定的路由路径
         }
 

@@ -10,7 +10,7 @@ import ajax from './ajax'
 const Base = ''
 
 //请求登录
-// export const reqLogin = (username, password) =>ajax.post(Base + '/login',{ username,password })
+export const reqLogin = (username, password) =>ajax.post(Base + '/login',{ username,password })
 // export const reqLogin = (username, password) => (
 //     ajax({
 //         method: 'POST',
@@ -22,17 +22,17 @@ const Base = ''
 //         // data:qs.stringify({username,password})
 //     })
 // )
-export function reqLogin(username, password) {
-    return ajax({
-        method: 'POST',
-        url: Base + '/login',
-        data: {  //data是对象，默认使用json格式的请求体携带参数数据
-            username,
-            password
-        }
-        // data:qs.stringify({username,password})
-    })
-}
+// export function reqLogin(username, password) {
+//     return ajax({
+//         method: 'POST',
+//         url: Base + '/login',
+//         data: {  //data是对象，默认使用json格式的请求体携带参数数据
+//             username,
+//             password
+//         }
+//         // data:qs.stringify({username,password})
+//     })
+// }
 
 // const name = 'admin'
 // const pwd = 'admin'

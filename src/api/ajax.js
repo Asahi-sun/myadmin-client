@@ -18,7 +18,7 @@ axios.interceptors.request.use(function (config) {
     if(method.toLowerCase() === 'post' && typeof data === 'object'){
         config.data  = qs.stringify(data)
     }
-    return config
+    return config 
 })
 
 // 添加响应拦截器

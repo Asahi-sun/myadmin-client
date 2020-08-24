@@ -23,12 +23,11 @@ class App extends React.Component {
     render() {
         return (
             <div style={{ width: '100%', height: '100%' }}>
-                <Router>
-                   
+                <Router>  
                     <Switch>
                         <Route path="/login"   component={Login} />
-                        <Route path="/admin" exact component={Admin} />
-                        <Redirect to="/admin" />
+                        <Route path="/"   component={Admin} />
+                        {/* <Redirect to="/admin" /> */}
                     </Switch>
                 </Router>
             </div>
