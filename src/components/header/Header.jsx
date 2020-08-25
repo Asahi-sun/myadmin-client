@@ -41,7 +41,7 @@ class Header extends Component {
             onOk: () => {
                 console.log(this)
                 console.log('OK');
-                // 确定后，删除用户信息
+                // 确定后，删除存储的用户信息
                 // local中的
                 storageUtils.removeUser()
                 // 内存中的
@@ -81,10 +81,10 @@ class Header extends Component {
      */
     getWeather = async () => {
         // 发请求
-        const { dayPicutreUrl, weather } = await reqWeather('南京')
+        const { dayPictureUrl , weather } = await reqWeather('南京')
         // 更新状态
         this.setState({
-            dayPicutreUrl,
+            dayPictureUrl,
             weather
         })
     }
@@ -109,8 +109,8 @@ class Header extends Component {
     }
 
     render() {
-
-        const { currentTime,dayPicutreUrl, weather} = this.state
+        
+        const { currentTime,dayPictureUrl, weather} = this.state
 
         const user = memoryUtils.user
 
@@ -133,7 +133,7 @@ class Header extends Component {
                     </div>
                     <div className="header-bottom-right">
                         <span>{currentTime}</span>
-                        <img src={dayPicutreUrl} alt="天气" />
+                        <img src={dayPictureUrl} alt="天气" />
                         <span>{  weather }</span>
                     </div>
                 </div>

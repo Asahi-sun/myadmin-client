@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.reqCategorys = exports.reqWeather = exports.reqLogin = void 0;
+exports.reqUpdataCategory = exports.reqAddCategory = exports.reqCategorys = exports.reqWeather = exports.reqLogin = void 0;
 
 var _qs = _interopRequireDefault(require("qs"));
 
@@ -74,10 +74,10 @@ var reqWeather = function reqWeather(city) {
       if (!error && data.error === 0) {
         //成功
         var _data$results$0$weath = data.results[0].weather_data[0],
-            dayPicutreUrl = _data$results$0$weath.dayPicutreUrl,
+            dayPictureUrl = _data$results$0$weath.dayPictureUrl,
             weather = _data$results$0$weath.weather;
         resolve({
-          dayPicutreUrl: dayPicutreUrl,
+          dayPictureUrl: dayPictureUrl,
           weather: weather
         });
       } else {
@@ -93,6 +93,27 @@ exports.reqWeather = reqWeather;
 
 var reqCategorys = function reqCategorys() {
   return _ajax["default"].get(Base + 'manage/category/list');
-};
+}; // 添加分类
+
 
 exports.reqCategorys = reqCategorys;
+
+var reqAddCategory = function reqAddCategory(categoryName) {
+  return _ajax["default"].post(Base + 'manage/category/add', {
+    categoryName: categoryName
+  });
+}; // 修改分类
+
+
+exports.reqAddCategory = reqAddCategory;
+
+var reqUpdataCategory = function reqUpdataCategory(_ref) {
+  var categoryId = _ref.categoryId,
+      categoryName = _ref.categoryName;
+  return _ajax["default"].post(Base + 'manage/category/update', {
+    categoryId: categoryId,
+    categoryName: categoryName
+  });
+};
+
+exports.reqUpdataCategory = reqUpdataCategory;

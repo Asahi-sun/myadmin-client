@@ -57,8 +57,8 @@ export const reqWeather = (city) =>{
         jsonp(url,{},(error,data)=>{
             if(!error && data.error === 0){ //成功
 
-                const {dayPicutreUrl,weather} = data.results[0].weather_data[0]
-                resolve({ dayPicutreUrl,weather })
+                const {dayPictureUrl, weather} = data.results[0].weather_data[0]
+                resolve({dayPictureUrl ,weather })
             }else{ //失败的
                 message.error('获取天气信息失败')
             }
@@ -71,3 +71,22 @@ export const reqWeather = (city) =>{
 // 获取分类列表
 
 export const reqCategorys = () => ajax.get(Base + 'manage/category/list')
+
+
+// 添加分类
+export const reqAddCategory = (categoryName) => ajax.post(
+    Base + 'manage/category/add',
+    { 
+        categoryName:categoryName 
+    }
+)
+
+// 修改分类
+
+export const reqUpdataCategory = ({categoryId,categoryName}) => ajax.post(
+    Base + 'manage/category/update',
+    { 
+        categoryId:categoryId,
+        categoryName:categoryName 
+    }
+)
