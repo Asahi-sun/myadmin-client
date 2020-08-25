@@ -1,5 +1,3 @@
-// 
-
 
 import React, { Component } from 'react'
 import {
@@ -18,7 +16,7 @@ import {
 
 import LinkButton from '../../components/LinkButton/linkButton';
 import { reqCategorys, reqAddCategory, reqUpdataCategory } from '../../api/index'
-import AddUpdataForm from './add-update-form'
+// import AddUpdataForm from './add-update-form'
 
 
 /**
@@ -28,7 +26,7 @@ export default class Category extends Component {
 
   formRef = React.createRef();
   state = {
-    categorys: [], //所有分裂的数据
+    categorys: [], //所有分类的数据
     loading: false, //是否正在请求数据中
     showStatus: 0. //0代表不显示，1代表显示添加，2代表显示修改
   }
@@ -105,7 +103,7 @@ export default class Category extends Component {
 
         // 根据响应结果，做不同处理
         if (result.status === 0) {
-          
+
           this.getCategorys()
           message.success(action + '分类成功')
         } else {

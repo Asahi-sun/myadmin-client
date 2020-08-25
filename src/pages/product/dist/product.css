@@ -1,0 +1,22 @@
+.product-card {
+  width: 100%;
+}
+.product-card-title {
+  width: 100%;
+}
+.product-card-title .product-card-title-select {
+  width: 200px;
+  margin: 0 10px;
+}
+.product-card-title .product-card-title-input {
+  width: 200px;
+  margin: 0 10px;
+}
+.product-card-title .product-card-title-button {
+  width: 63.84px;
+  background-color: #006666;
+  color: white;
+}
+.product-table {
+  width: 100%;
+}

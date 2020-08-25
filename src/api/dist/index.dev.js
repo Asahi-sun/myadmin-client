@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.reqUpdataCategory = exports.reqAddCategory = exports.reqCategorys = exports.reqWeather = exports.reqLogin = void 0;
+exports.reqGetProducts = exports.reqUpdataCategory = exports.reqAddCategory = exports.reqCategorys = exports.reqWeather = exports.reqLogin = void 0;
 
 var _qs = _interopRequireDefault(require("qs"));
 
@@ -92,7 +92,7 @@ var reqWeather = function reqWeather(city) {
 exports.reqWeather = reqWeather;
 
 var reqCategorys = function reqCategorys() {
-  return _ajax["default"].get(Base + 'manage/category/list');
+  return _ajax["default"].get(Base + '/manage/category/list');
 }; // 添加分类
 
 
@@ -110,10 +110,23 @@ exports.reqAddCategory = reqAddCategory;
 var reqUpdataCategory = function reqUpdataCategory(_ref) {
   var categoryId = _ref.categoryId,
       categoryName = _ref.categoryName;
-  return _ajax["default"].post(Base + 'manage/category/update', {
+  return _ajax["default"].post(Base + '/manage/category/update', {
     categoryId: categoryId,
     categoryName: categoryName
   });
-};
+}; // 请求商品分页列表
+
 
 exports.reqUpdataCategory = reqUpdataCategory;
+
+var reqGetProducts = function reqGetProducts(pageNum, pageSize) {
+  return (0, _ajax["default"])(Base + '/manage/product/list', {
+    params: {
+      //包含所有query参数的对象
+      pageNum: pageNum,
+      pageSize: pageSize
+    }
+  });
+};
+
+exports.reqGetProducts = reqGetProducts;
