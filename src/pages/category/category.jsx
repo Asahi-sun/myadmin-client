@@ -105,6 +105,7 @@ export default class Category extends Component {
 
         // 根据响应结果，做不同处理
         if (result.status === 0) {
+          
           this.getCategorys()
           message.success(action + '分类成功')
         } else {
