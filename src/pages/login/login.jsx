@@ -3,9 +3,7 @@ import { withRouter,Redirect } from 'react-router-dom'
 import {
     Form,
     Input,
-    Icon,
     Button,
-    Result,
     message,
 } from 'antd';
 
@@ -27,6 +25,7 @@ class Login extends Component {
 
     onFinish = async values => {  //此处onFinish必须配合表单中rules验证，不然无法取得值
         const result = await reqLogin(values.username,values.password)
+        console.log(result)
 
         // 登录成功
         if(result.status === 0){

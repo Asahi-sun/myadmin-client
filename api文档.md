@@ -12,7 +12,7 @@
 	9). 根据分类ID获取分类
 	10). 获取商品分页列表
 	11). 根据name/desc搜索产品分页列表
-  12). 根据商品ID获取商品
+    12). 根据商品ID获取商品
 	13). 添加商品
 	14). 更新商品
 	15). 对商品进行上架/下架处理
@@ -493,13 +493,13 @@
     POST
 
 ### 参数类型:
-    |参数		       |是否必选 |类型     |说明
+    |参数		   |是否必选 |类型     |说明
     |categoryId    |Y       |string   |分类ID
     |name          |Y       |string   |商品名称
     |desc          |N       |string   |商品描述
     |price         |N       |string   |商品价格
     |detail        |N       |string   |商品详情
-    |imgs          |N       |array   |商品图片名数组
+    |imgs          |N       |array    |商品图片名数组
 
 ### 返回示例：
     {
@@ -590,7 +590,7 @@
 ### 参数类型:
 
     |参数		|是否必选 |类型     |说明
-    |name    |Y       |string   |图片文件名
+    |name       |Y       |string   |图片文件名
 
 ### 返回示例：
     {
@@ -607,7 +607,7 @@
 
 ### 参数类型:
     |参数		     |是否必选 |类型     |说明
-    |roleName    |Y       |string   |角色名称
+    |roleName        |Y       |string   |角色名称
 
 ### 返回示例：
     {
@@ -694,10 +694,10 @@
 ### 参数类型:
   
     |参数		     |是否必选  |类型     |说明
-    |_id          |Y       |string   |角色ID
-    |menus        |Y       |array    |权限key数组
-    |auth_time    |Y       |number   |权限时间
-    |auth_name    |Y       |string   |权限人姓名
+    |_id             |Y        |string   |角色ID
+    |menus           |Y        |array    |权限key数组
+    |auth_time       |Y        |number   |权限时间
+    |auth_name       |Y        |string   |权限人姓名
 
 ### 返回示例：
     {

@@ -149,7 +149,10 @@ export default class Category extends Component {
       <Button
         type="primary"
         icon={<PlusOutlined />}
-        onClick={() => { this.setState({ showStatus: 1 }) }}
+        onClick={() => { 
+          this.category = {},
+          this.setState({ showStatus: 1 }) 
+        }}
       >
         添加
       </Button>

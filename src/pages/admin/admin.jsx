@@ -25,7 +25,7 @@ import User from '../user/user'
 import Bar from '../charts/bar'
 import Line from '../charts/line'
 import Pie from '../charts/pie'
-
+import OrderManagement from '../orderManagement/orderManagement'
 
 
 const {
@@ -69,6 +69,7 @@ class Admin extends Component {
                                     <Route path='/charts/bar' component={Bar} />
                                     <Route path='/charts/line' component={Line} />
                                     <Route path='/charts/pie' component={Pie} />
+                                    <Route path='/orderManagement' component={OrderManagement} />
                                     <Redirect to='/home' />
                                 </Switch>
                             </HashRouter>

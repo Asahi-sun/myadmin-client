@@ -15,7 +15,7 @@ module.exports = {
     mode: 'development',
 
     entry: {
-        wms_cz: path.join(__dirname, './src/index.js')
+        myadmin_client: path.join(__dirname, './src/index.js')
     },
 
     output: {
@@ -24,7 +24,7 @@ module.exports = {
     },
 
     plugins: [
-        htmlWebpackPlugin,
+        htmlWebpackPlugin, 
         miniCssExtractPlugin
     ],
 

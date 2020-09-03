@@ -10,7 +10,7 @@ export default class Home extends Component {
     render() {
         return (
             <div className="home">
-                Home
+                欢迎来到智库职能电商后台管理系统！
             </div>
         )
     }
